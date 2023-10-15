@@ -27,11 +27,13 @@ const DeleteModal = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        Bạn chắc chắn muốn xóa product: {dataDelete.produce_name}
+                        Bạn chắc chắn muốn xóa product:
+                        <br />
+                        {dataDelete.produce_name}
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button className="btn-success" onClick={() => handleSubmitDeleteProduct()}>Save changes</Button>
+                    <Button className="btn-danger" onClick={() => handleSubmitDeleteProduct()}>Delete</Button>
                     <Button className="btn-secondary" onClick={() => handleClose()}>Close</Button>
                 </Modal.Footer>
             </Modal>

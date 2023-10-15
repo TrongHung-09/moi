@@ -45,7 +45,7 @@ const DetailModal = (props) => {
                         <div className="row mb-3">
                             <label className="col-sm-3 col-form-label text-right">Name</label>
                             <div className="col-sm-9">
-                                <input type="email" className="form-control"
+                                <input type="text" className="form-control"
                                     value={nameProduct}
                                     onChange={(e) => setNameProduct(e.target.value)}
                                     readOnly
@@ -126,7 +126,7 @@ const DetailModal = (props) => {
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={() => handelClose()}>Close</Button>
+                    <Button onClick={() => handelClose()} className="btn-secondary">Close</Button>
                 </Modal.Footer>
             </Modal>
         </>

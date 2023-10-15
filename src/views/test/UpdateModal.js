@@ -157,8 +157,8 @@ const UpdateModal = (props) => {
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={() => handleSubmitUpdateProduct()}>Save change</Button>
-                    <Button onClick={() => handelClose()}>Close</Button>
+                    <Button onClick={() => handleSubmitUpdateProduct()} className="btn-success">Save change</Button>
+                    <Button onClick={() => handelClose()} className="btn-secondary">Close</Button>
                 </Modal.Footer>
             </Modal>
         </>

@@ -1,11 +1,13 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 const AddModal = (props) => {
 
-    const { listProduct, listBrand, listSubCategory, show, setShow } = props
+    const { listBrand, listSubCategory, show, setShow, alertComfirm } = props
 
     // const [showModal, setShow] = useState(show)
 
@@ -19,7 +21,14 @@ const AddModal = (props) => {
     const [subCategoryId, setSubCategoryId] = useState(1);
 
     const handleAdd = async () => {
-        let res = await axios.post(
+        if (nameProduct.trim().length === 0 || color.trim().length === 0 ||
+            quantity.trim().length === 0 || sellPrice.trim().length === 0 ||
+            originPrice.trim().length === 0) {
+            alertComfirm("Thông báo",
+                "Thêm thất bại", "error")
+            return;
+        }
+        let add = await axios.post(
             'http://localhost:8080/product/add',
             {
                 produce_name: nameProduct,
@@ -31,10 +40,11 @@ const AddModal = (props) => {
                 brand_id: brandId
             }
         );
-        // const newListProduct = [...listProduct, res.data]
         props.fetchProduct();
         handelClose();
-        // window.location.reload();
+        alertComfirm("Thông báo",
+            "Thêm thành công", "success")
+        return;
     }
 
     const handelClose = () => {
@@ -65,6 +75,7 @@ const AddModal = (props) => {
                                     value={nameProduct}
                                     onChange={(e) => setNameProduct(e.target.value)}
                                 />
+                                <small className="text-danger"></small>
                             </div>
                         </div>
                         <div className="row mb-3">
